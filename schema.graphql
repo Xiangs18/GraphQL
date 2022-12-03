@@ -1,0 +1,54 @@
+type Query {
+    doctorByName(name: String): Doctor
+    appointmentByDoctorName(doctor_name: String): [Appointment]
+}
+
+type Mutation {
+    createDoctor(name: String, clinic_name: String, specialty: String): Doctor
+    createPatient(name: String, age: Int, email: String): Patient
+    createTimeslot(start_time: String, end_time: String): Timeslot
+    createAppointment(doctor_name: String, time: TimeslotInput): Appointment
+    deleteAppointment(doctor_name: String, time: TimeslotInput): Appointment
+    createEvent(doctor_name: String, patient_name: String, time: TimeslotInput): Event
+    deleteEvent(patient_name: String, time: TimeslotInput): Event
+    updateEvent(doctor_name: String, new_patient_name: String, time: TimeslotInput): Event
+}
+
+type Doctor {
+    id: ID!
+    name: String!
+    clinic_name: String
+    specialty: String
+}
+
+type Patient {
+    id: ID!
+    name: String!
+    age: Int
+    email: String
+}
+
+type Appointment {
+    id: ID!
+    doctor_name: String
+    time: Timeslot
+}
+
+type Event {
+    id: ID!
+    doctor_name: String
+    patient_name: String
+    time: Timeslot
+}
+
+type Timeslot {
+    start_time: String!
+    end_time: String!
+}
+
+input TimeslotInput {
+    start_time: String!
+    end_time: String!
+}
+
+
