@@ -1,2 +1,2 @@
 # GraphQL
-Official repository for GraphQL
+This is theoOfficial repository for GraphQL APIs design and testing
